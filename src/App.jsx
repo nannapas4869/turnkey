@@ -10,7 +10,8 @@ import Setting from './pages/Setting';
 import AssignKPI from './pages/Assign'; // Ensure this is imported
 import TrackKPI from './pages/Track';   // Ensure this is imported
 import Performance from './pages/Performance';
-import Page2 from './pages/Assign/page2';
+import Department from './pages/Department';
+import Category from './pages/Category';
 import { useState } from 'react';
 function App() {
   const [expanded, setExpanded] = useState(true);
@@ -25,7 +26,13 @@ function App() {
       <div className="flex">
         <Sidebar expanded={expanded} setExpaned={setExpanded}>
           <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" to="/Dashboard" />
-          <SidebarItem icon={<SquareChartGantt size={20} />} text="Management" to="/Management" />
+          <SidebarItem icon={<SquareChartGantt size={20} />} text="Management" to="/Management"
+          submenu = {[
+              { text: "Department", to: "/Department", icon: <Circle size={10} /> },
+              { text: "Employee", to: "/Employee", icon: <Circle size={10} /> },
+              { text: "Category", to: "/Category", icon: <Circle size={10} /> },
+              { text: "Sub-Caegory", to: "/SubCategory", icon: <Circle size={10} /> },
+          ]} />
           <SidebarItem
             icon={<ChartPie size={20} />}
             text="KPI Management"
@@ -57,9 +64,10 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Management" element={<Management />} />
+            <Route path="/Category" element={<Category/>} />
+            <Route path="/Department" element={<Department />} />
             <Route path="/KPIManagement" element={<ManagementKPI />} />
             <Route path="/Assign" element={<AssignKPI />} />
-            <Route path="/Assign/page2" element={<Page2/>} />
             <Route path="/Track" element={<TrackKPI />} />
             <Route path="/Report" element={<Report />} />
             <Route path="/Settings" element={<Setting />} />

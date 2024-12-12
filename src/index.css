@@ -53,3 +53,20 @@ body {
 .background_gray {
     background-color: #D9D9D9;
 }
+.button__style__table {
+    background-color: #5175E9;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+}
+.border__color__input {
+    border-color: #ccc;
+}
+.bg-active {
+    background-color: rgba(37,126,126,0.09);
+    padding: 0.4rem 2rem;
+    border-radius: 8px;
+}
+.bg-circle-active {
+    color: #3AA94F;
+}
