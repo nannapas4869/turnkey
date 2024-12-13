@@ -70,3 +70,36 @@ body {
 .bg-circle-active {
     color: #3AA94F;
 }
+.eye__style {
+    font-size: 20px;
+    color: #5175E9;
+}
+.pencil__style {
+    font-size: 20px;
+    color: #FEB135;
+}
+.bin__style {
+    font-size: 20px;
+    color: #FD4444;
+}
+.bg-circle-inactive {
+    color: #6C6C6C;
+}
+.arrow__size {
+    font-size: 30px;
+    cursor: pointer;
+}
+.number__size {
+    font-size: 25px;
+    cursor:pointer;
+}
+.active {
+    text-decoration: underline;
+}
+.text__purple {
+    color: #4F46E5;
+}
+
+input[type="radio"] {
+    scale: 1.5;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-
+import Switch from '../components/Switch'
 const DataTable = ({ headers = [], data = [] }) => {
     console.log("Headers:", headers);
     console.log("Data:", data);
@@ -81,12 +81,12 @@ const DataTable = ({ headers = [], data = [] }) => {
                 colSpan={headers.length + 1}
                 className="text-center px-4 py-6 text-gray-500 text-xl font-semibold"
               >
-                <p className="mt-10">No Category Available</p>
+                <p className="mt-10">No Department Available</p>
                 <button
                   className="mt-10 button__style__table"
                   onClick={() => setIsModalOpen(true)}
                 >
-                  <i className="ri-add-fill"></i> Create Category
+                  <i className="ri-add-fill"></i> Create Departments
                 </button>
               </td>
             </tr>
@@ -151,7 +151,7 @@ const DataTable = ({ headers = [], data = [] }) => {
               />
               <label className="block text-xl mt-5 mb-5">Manager</label>
               <Select
-                className="basic-single w-full mt-10 mb-10"
+                className="basic-single w-full mt-5 mb-10"
                 classNamePrefix="select"
                 value={formValues.manager}
                 onChange={handleSelectChange}
@@ -160,6 +160,8 @@ const DataTable = ({ headers = [], data = [] }) => {
                 placeholder="Choose Your Manager"
               />
             </div>
+            <label className="block text-xl mt-5 mb-5">Status</label>
+            <Switch/>
             <div className="flex justify-end aligns-end">
               <button
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 mr-4"

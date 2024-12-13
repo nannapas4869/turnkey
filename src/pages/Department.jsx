@@ -1,16 +1,10 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
 import Select from "react-select";
-import DataTable from "../components/DataTable";
+import DataTableDepartment from "../components/DataTable_Department";
 function Department() {
     const headers = ["No.","Department", "Manager Name", "Department ID","Employee", "Status", "Action"];
-    const data1 = [[
-         <input
-        type="checkbox"
-      />,
-      "1"
-    ]
-       
+    const data1 = [
     ];
   const options = [
     { value: "Open", label: "Open" },
@@ -32,7 +26,7 @@ function Department() {
           options={options}
           placeholder="All Status"
         />
-        <DataTable headers={headers} data={data1} />
+        <DataTableDepartment headers={headers} data={data1} />
       </div>
     </article>
   );
