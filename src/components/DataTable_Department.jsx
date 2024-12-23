@@ -126,7 +126,7 @@ const DataTable = ({ headers = [], data = [] }) => {
           onClick={() => setIsModalOpen(false)}
         >
           <div
-            className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
+            className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100 max-h-[500px] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className="text-3xl font-semibold mb-4">Create Department</h2>

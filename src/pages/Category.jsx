@@ -8,6 +8,8 @@ function Category() {
   const [selectedRows, setSelectedRows] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isModalOpen3, setIsModalOpen3] = useState(false);
+  const [isModalOpen4, setIsModalOpen4] = useState(false);
   const handleSelectChange = (selectedOption) => {
     setFormValues((prev) => ({
       ...prev,
@@ -26,8 +28,8 @@ function Category() {
       </button>,
       <div class="flex flex-row gap-3">
         <i class="ri-eye-line eye__style cursor-pointer" onClick={() => setIsModalOpen2(true)}></i>
-        <i class="ri-pencil-line pencil__style"></i>
-        <i class="ri-delete-bin-5-line bin__style"></i>
+        <i class="ri-pencil-line pencil__style cursor-pointer"  onClick={() => setIsModalOpen3(true)}></i>
+        <i class="ri-delete-bin-5-line bin__style cursor-pointer" onClick={() => setIsModalOpen4(true)}></i>
       </div>,
     ],
     [
@@ -119,12 +121,22 @@ function Category() {
     }
   };
   const [activeTab, setActiveTab] = useState("detail");
+  const [activeTab2, setActiveTab2] = useState("detail");
   const [formValues, setFormValues] = useState({
     departmentName: "",
     weight: "",
   });
+  const [formValues2, setFormValues2] = useState({
+    departmentName2: "Project Management",
+    weight2: 70,
+  });
+  const [selectedRadio2, setSelectedRadio2] = useState(true);
+  const isFormValid2 =
+    formValues2.departmentName2 !== "" &&
+    formValues.weight2 !== "" &&
+    selectedRadio2 !== false;
   const [selectedRadio, setSelectedRadio] = useState(true); // Track selected radio button
-
+ 
   // Check if the form is valid
   const isFormValid =
     formValues.departmentName.trim() !== "" &&
@@ -138,6 +150,9 @@ function Category() {
 
   const handleRadioChange = (e) => {
     setSelectedRadio(e.target.value);
+  };
+  const handleRadioChange2 = (e) => {
+    setSelectedRadio2(e.target.value);
   };
   return (
     <article className="bg-white w-full h-full">
@@ -316,7 +331,7 @@ function Category() {
                     </label>
                   </div>
                   <div className="flex items-center mb-3">
-                    <label className="text-xl font-light w-24">Weights:</label>
+                    <label className="text-xl font-light w-28">Weights:</label>
                     <input
                       type="text"
                       name="weight"
@@ -373,8 +388,59 @@ function Category() {
               placeholder="Enter Category Name"
               disabled
             />
-            <hr />
-
+            <div className="mt-5"></div>
+            <Switch />
+  
+            <hr className="mt-5 mb-5"/>
+            <p className="mb-5">Please select your preferred calculation method</p>
+            <div class="flex items-center mb-4 mt-10">
+                    <input
+                      id="default-radio-1"
+                      type="radio"
+                      value=""
+                      name="default-radio"
+                      class="w-4 h-4 text-blue-600 "
+                      onChange={handleRadioChange}
+                      disabled
+                    />
+                    <label
+                      htmlFor="default-radio-1"
+                      class="ms-2 text-lg font-normal text-gray-900 dark:text-gray-300"
+                    >
+                      Standard: All KPIs have equal weight in the evaluation.
+                    </label>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input
+                      checked
+                      id="default-radio-2"
+                      type="radio"
+                      value=""
+                      name="default-radio"
+                      onChange={handleRadioChange}
+                      class="w-4 h-4 text-blue-600"
+                      disabled
+                    />
+                    <label
+                      htmlFor="default-radio-2"
+                      class="ms-2 text-lg font-normal text-gray-900 dark:text-gray-300"
+                    >
+                      Custom: Customize KPI Weights to Suit Your Needs.
+                    </label>
+                  </div>
+                  <div className="flex items-center mb-3">
+                    <label className="text-xl font-light w-28">Weights:</label>
+                    <input
+                      type="text"
+                      name="weight"
+                      value="80"
+                      onChange={handleInputChange}
+                      className="border-solid border border__color__input p-3 w-full rounded"
+                      placeholder=""
+                      disabled
+                    />
+                  </div>
+                  <p class="text-red-500 text-base font-light">*Ensure the Total Weight Doesn't Exceed 100%</p>
             <div className="flex justify-end aligns-end">
               <button
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 mr-4"
@@ -382,20 +448,166 @@ function Category() {
               >
                 Cancel
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+       {isModalOpen3 && (
+        <div
+          className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300"
+          onClick={() => setIsModalOpen3(false)}
+        >
+          <div
+            className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-3xl font-semibold mb-4">Create Category</h2>
+            <div className="flex flex-row gap-10 mt-10">
+              <p
+                className={`cursor-pointer text-xl ${
+                  activeTab2 === "detail"
+                    ? "underline font-bold text__purple"
+                    : ""
+                }`}
+                onClick={() => setActiveTab2("detail")}
+              >
+                Detail
+              </p>
+              <p
+                className={`cursor-pointer text-xl ${
+                  activeTab2 === "format"
+                    ? "underline font-bold text__purple"
+                    : ""
+                }`}
+                onClick={() => setActiveTab2("format")}
+              >
+                Format
+              </p>
+            </div>
+            {activeTab2 === "detail" && (
+              <article id="detail">
+                <div className="mt-14">
+                  <label className="block text-xl mt-5 mb-5">
+                    Category Name
+                  </label>
+                  <input
+                    type="text"
+                    name="departmentName"
+                    value={formValues2.departmentName2}
+                    onChange={handleInputChange}
+                    className="border-solid border border__color__input p-3 w-full rounded"
+                    placeholder="Enter Category Name"
+                  />
+                </div>
+                <div className="text-xl mt-5 mb-5">Status</div>
+                <Switch />
+              </article>
+            )}
+            {activeTab2 === "format" && (
+              <article id="format">
+                <div className="mt-6">
+                  <p className="text-xl font-normal">
+                    Please select your prefereed calculation method.
+                  </p>
+                  <div class="flex items-center mb-4 mt-10">
+                    <input
+                      id="default-radio-1"
+                      type="radio"
+                      value=""
+                      name="default-radio"
+                      class="w-4 h-4 text-blue-600 "
+                      onChange={handleRadioChange2}
+                    />
+                    <label
+                      htmlFor="default-radio-1"
+                      class="ms-2 text-lg font-normal text-gray-900 dark:text-gray-300"
+                    >
+                      Standard: All KPIs have equal weight in the evaluation.
+                    </label>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input
+                      checked
+                      id="default-radio-2"
+                      type="radio"
+                      value=""
+                      name="default-radio"
+                      onChange={handleRadioChange2}
+                      class="w-4 h-4 text-blue-600"
+                    />
+                    <label
+                      htmlFor="default-radio-2"
+                      class="ms-2 text-lg font-normal text-gray-900 dark:text-gray-300"
+                    >
+                      Custom: Customize KPI Weights to Suit Your Needs.
+                    </label>
+                  </div>
+                  <div className="flex items-center mb-3">
+                    <label className="text-xl font-light w-28">Weights:</label>
+                    <input
+                      type="text"
+                      name="weight"
+                      value={formValues2.weight2}
+                      onChange={handleInputChange}
+                      className="border-solid border border__color__input p-3 w-full rounded"
+                      placeholder=""
+                    />
+                  </div>
+                  <p class="text-red-500 text-base font-light">*Ensure the Total Weight Doesn't Exceed 100%</p>
+                </div>
+              </article>
+            )}
+
+            <div className="flex justify-end aligns-end">
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 mr-4"
+                onClick={() => setIsModalOpen3(false)}
+              >
+                Cancel
+              </button>
               <button
                 className={`px-4 py-2 rounded ${
-                  isFormValid
+                  isFormValid2
                     ? "bg-blue-500 text-white hover:bg-blue-600"
                     : "bg-gray-300 text-gray-500 cursor-not-allowed"
                 }`}
-                disabled={!isFormValid}
+                disabled={!isFormValid2}
               >
-                Create Category
+                Update
               </button>
             </div>
           </div>
         </div>
       )}
+       {isModalOpen4 && (
+         <div
+          className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300"
+          onClick={() => setIsModalOpen4(false)}
+        >
+          <div
+            className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-3xl font-semibold mb-4">Delete Category!!</h2>
+            <hr className="mb-10"/>
+            <p className="text-xl font-semibold mb-5">Notification</p>
+            <p className="mb-10">Are you sure you want to delete this category? This action cannot be done.</p>
+            <div className="flex justify-end aligns-end">
+              <button
+                className="px-4 py-2 bg-white text-black rounded"
+                onClick={() => setIsModalOpen4(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 mr-4" 
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+       )}
     </article>
   );
 }

@@ -12,6 +12,7 @@ import TrackKPI from './pages/Track';   // Ensure this is imported
 import Performance from './pages/Performance';
 import Department from './pages/Department';
 import Category from './pages/Category';
+import SubCategory from './pages/SubCategory';
 import { useState } from 'react';
 function App() {
   const [expanded, setExpanded] = useState(true);
@@ -65,6 +66,7 @@ function App() {
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Management" element={<Management />} />
             <Route path="/Category" element={<Category/>} />
+            <Route path="/SubCategory" element={<SubCategory/>} />
             <Route path="/Department" element={<Department />} />
             <Route path="/KPIManagement" element={<ManagementKPI />} />
             <Route path="/Assign" element={<AssignKPI />} />
