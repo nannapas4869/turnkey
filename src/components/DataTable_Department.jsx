@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import Switch from '../components/Switch'
-const DataTable = ({ headers = [], data = [] }) => {
+import Department_2 from '../pages/Department_2'
+const DataTable_Department = ({ headers = [], data = [] }) => {
     console.log("Headers:", headers);
     console.log("Data:", data);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -52,18 +54,16 @@ const DataTable = ({ headers = [], data = [] }) => {
     { value: "Davis Macus", label: "Davis Macus" },
     { value: "Joshua John", label: "Joshua John" },
   ];
-
+  const navigate = useNavigate();
+  const goToDetailWithState = () => {
+    navigate('/Department/2', {state: { from: 'Department_2'}});
+  }
   return (
     <div className="overflow-x-auto">
       <table className="bg-white table-auto w-full">
         <thead className="bg-gray-100">
           <tr>
-            <th className="border-b border-gray-500 bg-white w-12 px-4 py-2">
-              <input
-                type="checkbox"
-                onChange={(e) => handleSelectAll(e.target.checked)}
-              />
-            </th>
+           
             {headers.map((header, index) => (
               <th
                 key={index}
@@ -170,6 +170,7 @@ const DataTable = ({ headers = [], data = [] }) => {
                 Cancel
               </button>
               <button
+              onClick={goToDetailWithState}
                 className={`px-4 py-2 rounded ${
                   isFormValid
                     ? "bg-blue-500 text-white hover:bg-blue-600"
@@ -187,4 +188,4 @@ const DataTable = ({ headers = [], data = [] }) => {
   );
 };
 
-export default DataTable;
+export default DataTable_Department;
