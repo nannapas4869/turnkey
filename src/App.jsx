@@ -15,6 +15,7 @@ import Category from './pages/Category';
 import Department_2 from './pages/Department_2';
 import SubCategory from './pages/SubCategory';
 import { useState } from 'react';
+import Sub2 from './pages/Sub2';
 function App() {
   const [expanded, setExpanded] = useState(true);
   const [language, setLanguage] = useState('EN');
@@ -68,6 +69,7 @@ function App() {
             <Route path="/Management" element={<Management />} />
             <Route path="/Category" element={<Category/>} />
             <Route path="/SubCategory" element={<SubCategory/>} />
+            <Route path="/SubCategory/2" element={<Sub2/>} />
             <Route path="/Department" element={<Department />} />
             <Route path="/Department/2" element={<Department_2/>} />
             <Route path="/KPIManagement" element={<ManagementKPI />} />

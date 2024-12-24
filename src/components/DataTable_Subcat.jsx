@@ -1,56 +1,71 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Select from "react-select";
+import Switch from "./Switch";
 
-const TableComponent = () => {
-  const [data, setData] = useState([]); // Table data
-  const [selectedRows, setSelectedRows] = useState([]); // Selected rows
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility
-  const [activeTab, setActiveTab] = useState("detail"); // Active tab in modal
-  const [rows, setRows] = useState([{ id: 1, value: "" }]); // Matrix rows
+const DataTable_Subcat = ({ headers = [], data = [] }) => {
+  const [selectedRows, setSelectedRows] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("detail");
   const [formValues, setFormValues] = useState({
-    objectiveName: "",
-    desiredResults: "",
+    departmentName: "",
+    departmentId: "",
     targets: "",
-  }); // Form values
-  const [isFormValid, setIsFormValid] = useState(false); // Form validation
+    manager: null,
+  });
+  const [rows, setRows] = useState([{ id: 1, value: "" }]);
+  const navigate = useNavigate();
 
-  // Handle checkbox selection
-  const handleSelectAll = (isChecked) => {
-    setSelectedRows(isChecked ? data.map((_, index) => index) : []);
+  // Navigation Function
+  const goToDetailWithState2 = () => {
+    navigate('/SubCategory/2', { state: { from: 'Sub2' } });
   };
 
-  const handleRowSelection = (index, isChecked) => {
-    setSelectedRows((prev) =>
-      isChecked ? [...prev, index] : prev.filter((i) => i !== index)
-    );
-  };
-
-  // Handle form input changes
+  // Handle Input Change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [name]: value }));
+    setFormValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  // Add new matrix row
+  // Add New Row in Matrix
   const addNewRow = () => {
     const newId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 1;
     setRows([...rows, { id: newId, value: "" }]);
   };
 
+  // Handle Matrix Input Change
   const handleMatrixInputChange = (e, id) => {
     const { value } = e.target;
-    setRows((prev) =>
-      prev.map((row) => (row.id === id ? { ...row, value } : row))
+    setRows((prevRows) =>
+      prevRows.map((row) => (row.id === id ? { ...row, value } : row))
     );
   };
 
-  // Validate form
-  React.useEffect(() => {
-    const isValid =
-      formValues.objectiveName.trim() &&
-      formValues.desiredResults.trim() &&
-      formValues.targets.trim();
-    setIsFormValid(isValid);
-  }, [formValues]);
+  // Handle Select All
+  const handleSelectAll = (isChecked) => {
+    if (isChecked) {
+      setSelectedRows(data.map((_, index) => index));
+    } else {
+      setSelectedRows([]);
+    }
+  };
+
+  // Handle Row Selection
+  const handleRowSelection = (index, isChecked) => {
+    if (isChecked) {
+      setSelectedRows((prev) => [...prev, index]);
+    } else {
+      setSelectedRows((prev) => prev.filter((i) => i !== index));
+    }
+  };
+
+  const isFormValid =
+    formValues.departmentName.trim() !== "" &&
+    formValues.departmentId.trim() !== "" &&
+    formValues.targets.trim() !== "";
 
   return (
     <div className="overflow-x-auto">
@@ -63,16 +78,21 @@ const TableComponent = () => {
                 onChange={(e) => handleSelectAll(e.target.checked)}
               />
             </th>
-            <th className="border-b border-gray-500 bg-white px-4 py-2 text-left text-gray-600">
-              Header
-            </th>
+            {headers.map((header, index) => (
+              <th
+                key={index}
+                className="border-b border-gray-500 bg-white px-4 py-2 text-left text-gray-600"
+              >
+                {header}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {data.length === 0 ? (
             <tr>
               <td
-                colSpan={2}
+                colSpan={headers.length + 1}
                 className="text-center px-4 py-6 text-gray-500 text-xl font-semibold"
               >
                 <p className="mt-10">No Objective Available</p>
@@ -86,7 +106,10 @@ const TableComponent = () => {
             </tr>
           ) : (
             data.map((row, rowIndex) => (
-              <tr key={rowIndex} className={rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+              <tr
+                key={rowIndex}
+                className={rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"}
+              >
                 <td className="px-4 py-2">
                   <input
                     type="checkbox"
@@ -96,7 +119,11 @@ const TableComponent = () => {
                     }
                   />
                 </td>
-                <td className="px-4 py-2 text-gray-700">{row}</td>
+                {row.map((cell, cellIndex) => (
+                  <td key={cellIndex} className="px-4 py-2 text-gray-700">
+                    {cell}
+                  </td>
+                ))}
               </tr>
             ))
           )}
@@ -115,20 +142,16 @@ const TableComponent = () => {
             <h2 className="text-3xl font-semibold mb-4">Create Objective</h2>
             <div className="flex gap-10">
               <p
-                className={`cursor-pointer text-xl ${
-                  activeTab === "detail"
-                    ? "underline font-bold text__purple"
-                    : ""
+                className={`text-xl cursor-pointer ${
+                  activeTab === "detail" ? "font-bold text-blue-500 underline" : ""
                 }`}
                 onClick={() => setActiveTab("detail")}
               >
                 Detail
               </p>
               <p
-                className={`cursor-pointer text-xl ${
-                  activeTab === "matrix"
-                    ? "underline font-bold text__purple"
-                    : ""
+                className={`text-xl cursor-pointer ${
+                  activeTab === "matrix" ? "font-bold text-blue-500 underline" : ""
                 }`}
                 onClick={() => setActiveTab("matrix")}
               >
@@ -136,34 +159,40 @@ const TableComponent = () => {
               </p>
             </div>
             {activeTab === "detail" && (
-              <div>
-                <label className="block text-xl mt-5">Objective Name</label>
+              <div className="mt-4">
+                <label className="block text-xl mt-5 mb-5">
+                  Objective Name
+                </label>
                 <input
                   type="text"
-                  name="objectiveName"
-                  value={formValues.objectiveName}
+                  name="departmentName"
+                  value={formValues.departmentName}
                   onChange={handleInputChange}
                   className="border p-3 w-full rounded"
                   placeholder="Enter Objective Name"
                 />
-                <label className="block text-xl mt-5">Desired Results</label>
+                <label className="block text-xl mt-5 mb-5">
+                  Desired results
+                </label>
                 <input
                   type="text"
-                  name="desiredResults"
-                  value={formValues.desiredResults}
+                  name="departmentId"
+                  value={formValues.departmentId}
                   onChange={handleInputChange}
                   className="border p-3 w-full rounded"
-                  placeholder="Enter Desired Results"
+                  placeholder="Enter desired results"
                 />
-                <label className="block text-xl mt-5">Targets</label>
+                <label className="block text-xl mt-5 mb-5">Targets</label>
                 <input
                   type="text"
                   name="targets"
                   value={formValues.targets}
                   onChange={handleInputChange}
                   className="border p-3 w-full rounded"
-                  placeholder="Enter Targets"
+                  placeholder="Enter targets"
                 />
+                <label className="block text-xl mt-5 mb-5">Status</label>
+                <Switch />
               </div>
             )}
             {activeTab === "matrix" && (
@@ -177,14 +206,14 @@ const TableComponent = () => {
                 <table className="bg-white table-auto w-full mt-5">
                   <thead className="bg-gray-100">
                     <tr>
-                      <th>No.</th>
-                      <th>Evaluation Criteria</th>
+                      <th className="text-xl">No.</th>
+                      <th className="text-left text-xl">Evaluation Criteria</th>
                     </tr>
                   </thead>
                   <tbody>
                     {rows.map((row) => (
                       <tr key={row.id}>
-                        <td>{row.id}</td>
+                        <td className="text-center p-4">{row.id}</td>
                         <td>
                           <input
                             type="text"
@@ -200,14 +229,15 @@ const TableComponent = () => {
                 </table>
               </div>
             )}
-            <div className="flex justify-end mt-4">
+            <div className="flex justify-end">
               <button
-                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 mr-2"
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 mr-4"
                 onClick={() => setIsModalOpen(false)}
               >
                 Cancel
               </button>
               <button
+                onClick={goToDetailWithState2}
                 className={`px-4 py-2 rounded ${
                   isFormValid
                     ? "bg-blue-500 text-white hover:bg-blue-600"
@@ -215,7 +245,7 @@ const TableComponent = () => {
                 }`}
                 disabled={!isFormValid}
               >
-                Create Objective
+                Create Category
               </button>
             </div>
           </div>
@@ -225,4 +255,4 @@ const TableComponent = () => {
   );
 };
 
-export default TableComponent;
+export default DataTable_Subcat;
