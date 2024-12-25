@@ -32,7 +32,6 @@ function App() {
           <SidebarItem icon={<SquareChartGantt size={20} />} text="Management" to="/Management"
           submenu = {[
               { text: "Department", to: "/Department", icon: <Circle size={10} /> },
-              { text: "Employee", to: "/Employee", icon: <Circle size={10} /> },
               { text: "Category", to: "/Category", icon: <Circle size={10} /> },
               { text: "Sub-Caegory", to: "/SubCategory", icon: <Circle size={10} /> },
           ]} />
@@ -41,9 +40,7 @@ function App() {
             text="KPI Management"
             to="/KPIManagement"
             submenu={[
-              { text: "Assign KPIs", to: "/Assign", icon: <Circle size={10} /> },
               { text: "Track KPIs", to: "/Track", icon: <Circle size={10} /> },
-              { text: "Performance", to: "/Performance", icon: <Circle size={10} /> },
             ]}
           />
           <SidebarItem icon={<ClipboardPlus size={20} />} text="Report" to="/Report" />

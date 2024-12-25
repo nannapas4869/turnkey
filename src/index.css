@@ -103,3 +103,7 @@ body {
 input[type="radio"] {
     scale: 1.5;
 }
+
+.all__kpis {
+    background-color: #E6F6F2;
+}
