@@ -28,7 +28,6 @@ function App() {
     <>
       <div className="flex">
         <Sidebar expanded={expanded} setExpaned={setExpanded}>
-          <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" to="/Dashboard" />
           <SidebarItem icon={<SquareChartGantt size={20} />} text="Management" to="/Management"
           submenu = {[
               { text: "Department", to: "/Department", icon: <Circle size={10} /> },
@@ -61,7 +60,6 @@ function App() {
         </Sidebar>
         <div className="flex-1 p-4">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Management" element={<Management />} />
             <Route path="/Category" element={<Category/>} />
