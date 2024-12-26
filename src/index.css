@@ -107,3 +107,19 @@ input[type="radio"] {
 .all__kpis {
     background-color: #E6F6F2;
 }
+.notStart {
+    background-color: #C5C5C5;
+
+}
+.offTrack {
+    background-color: #FD4444;
+    color: white;
+}
+.onTrack {
+   background-color: #FEB135;
+   color: white;
+}
+.completed {
+    background-color: #3AA94F;
+    color: white;
+}
