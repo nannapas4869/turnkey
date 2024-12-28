@@ -112,8 +112,8 @@ function Sub2() {
       ],
     ];
     const options = [
-      { value: "Open", label: "Open" },
-      { value: "Close", label: "Close" },
+      { value: "Active", label: "Active" },
+      { value: "Inactive", label: "Inactive" },
     ];
     const itemsPerPageOptions = [5, 10, 20, 50, 100];
     const [currentPage, setCurrentPage] = useState(1);
@@ -185,7 +185,7 @@ function Sub2() {
 
         <div className="flex justify-end items-start ">
           <button
-            className="mt-10 button__style__table text-xl"
+            className="mt-10 button__style__table__subcat text-xl"
             onClick={() => setIsModalOpen(true)}
           >
             <i className="ri-add-fill"></i> Create Category
