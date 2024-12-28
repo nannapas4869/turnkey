@@ -135,14 +135,15 @@ function Sub2() {
     const [activeTab, setActiveTab] = useState("detail");
     const [activeTab2, setActiveTab2] = useState("detail");
     const [formValues, setFormValues] = useState({
-      departmentName: "",
-      weight: "",
+      departmentName: "Project Timeline",
+      departmentId: "result",
+      targets: "30",
     });
-    const [formValues2, setFormValues2] = useState({
-      departmentName: "Project Management",
-      departmentId: "Grow the follower base across all social media platforms",
-      targets: "Increase followers by 15% per quarter"
-    });
+    // const [formValues2, setFormValues2] = useState({
+    //   departmentName: "Project Management",
+    //   departmentId: "Grow the follower base across all social media platforms",
+    //   targets: "Increase followers by 15% per quarter"
+    // });
     const [selectedRadio2, setSelectedRadio2] = useState(true);
    
    
@@ -153,10 +154,13 @@ function Sub2() {
       formValues.targets !== "" 
      
   
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setFormValues((prev) => ({ ...prev, [name]: value }));
-    };
+      const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues((prevValues) => ({
+          ...prevValues,
+          [name]: value, // Update the specific field dynamically
+        }));
+      };
   
     const handleRadioChange = (e) => {
       setSelectedRadio(e.target.value);
@@ -506,7 +510,7 @@ function Sub2() {
            <input
              type="text"
              name="departmentName"
-             value={formValues2.departmentName}
+             value={formValues.departmentName}
              onChange={handleInputChange}
              className="border p-3 w-full rounded"
              placeholder="Enter Objective Name"
@@ -517,7 +521,7 @@ function Sub2() {
            <input
              type="text"
              name="departmentId"
-             value={formValues2.departmentId}
+             value= {formValues.departmentId}
              onChange={handleInputChange}
              className="border p-3 w-full rounded"
              placeholder="Enter desired results"
@@ -526,7 +530,7 @@ function Sub2() {
            <input
              type="text"
              name="targets"
-             value={formValues2.targets}
+             value={formValues.targets}
              onChange={handleInputChange}
              className="border p-3 w-full rounded"
              placeholder="Enter targets"

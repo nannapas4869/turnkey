@@ -123,8 +123,7 @@ function Category() {
   const [activeTab, setActiveTab] = useState("detail");
   const [activeTab2, setActiveTab2] = useState("detail");
   const [formValues, setFormValues] = useState({
-    departmentName: "",
-    weight: "",
+    departmentName: "Budget Variance",
   });
   const [formValues2, setFormValues2] = useState({
     departmentName2: "Project Management",
@@ -342,7 +341,7 @@ function Category() {
                   <input
                     type="text"
                     name="departmentName"
-                    value={formValues2.departmentName2}
+                    value={formValues.departmentName}
                     onChange={handleInputChange}
                     className="border-solid border border__color__input p-3 w-full rounded"
                     placeholder="Enter Category Name"
