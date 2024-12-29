@@ -7,8 +7,8 @@ const SubCategory = () => {
     const data1 = [
     ];
   const options = [
-    { value: "Open", label: "Open" },
-    { value: "Close", label: "Close" },
+    { value: "Active", label: "Active" },
+    { value: "Inactive", label: "Inactive" },
   ];
     return (
         <>

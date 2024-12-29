@@ -35,28 +35,28 @@ function Department() {
     setIsModalOpen(false);
   };
   return (
-    <article className="bg-white w-full h-full">
-      <div className="container mx-auto p-4">
-        <div className="flex flex-row justify-between">
-           <h1 className="mb-1">Departments</h1>
-            <p className="font-light text-xl">
-              Manage the departments your organization's KPI
-            </p>
-        
-        </div>
-       
-        <SearchBar />
-        <Select
-          className="basic-single w-44 mt-10 mb-10"
-          classNamePrefix="select"
-          defaultValue={""}
-          name="status"
-          options={options}
-          placeholder="All Status"
-        />
-        <DataTableDepartment headers={headers} data={data1} />
-      </div>
-    </article>
+<article className="bg-white w-full h-full">
+  <div className="container mx-auto p-4">
+    <h1 className="mb-1">Employee Management</h1>
+    <p className="font-light text-xl">
+      View the employee within your organization.
+    </p>
+    <SearchBar />
+    <div className="flex flex-row justify-between">
+      <Select
+        className="basic-single w-44 mt-10 mb-10"
+        classNamePrefix="select"
+        defaultValue={""}
+        name="status"
+        options={options}
+        placeholder="All Status"
+      />
+    </div>
+  </div>
+
+  <DataTableDepartment headers={headers} data={data1} />
+</article>
+
   );
 }
 

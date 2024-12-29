@@ -99,8 +99,8 @@ function Category() {
     ],
   ];
   const options = [
-    { value: "Open", label: "Open" },
-    { value: "Close", label: "Close" },
+    { value: "Active", label: "Active" },
+    { value: "Inactive", label: "Inactive" },
   ];
 
   const itemsPerPageOptions = [5, 10, 20, 50, 100];
@@ -181,7 +181,7 @@ function Category() {
 
           <div className="flex justify-end items-start ">
             <button
-              className="mt-10 button__style__table text-xl"
+              className="mt-10 button__style__table__subcat text-xl"
               onClick={() => setIsModalOpen(true)}
             >
               <i className="ri-add-fill"></i> Create Category
@@ -305,7 +305,7 @@ function Category() {
               type="text"
               name="departmentName"
               value="Category1"
-              className="border-solid border border__color__input p-3 w-full rounded"
+              className="border-solid border border__color__input p-3 w-full rounded mb-5"
               placeholder="Enter Category Name"
               disabled
             />

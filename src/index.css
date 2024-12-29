@@ -129,3 +129,6 @@ input[type="radio"] {
     background-color: #3AA94F;
     color: white;
 }
+.padding_0 {
+    padding-bottom: 0 !important;
+}

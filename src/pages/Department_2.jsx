@@ -12,16 +12,7 @@ const [selectedRows, setSelectedRows] = useState([]);
   const [isModalOpen3, setIsModalOpen3] = useState(false);
   const [isModalOpen4, setIsModalOpen4] = useState(false);
   const [isModalOpen5, setIsModalOpen5] = useState(false                                                                               )
-  const handleSelectChange = (selectedOption) => {
-    setFormValues((prev) => ({
-      ...prev,
-      manager: selectedOption,
-    }));
-  };
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [name]: value }));
-  };
+ 
       const headers = ["No.", "Department", "Manager Name", "Employee", "status", "Action"];
       const data = [
         [
@@ -67,8 +58,6 @@ const [selectedRows, setSelectedRows] = useState([]);
           setCurrentPage(page);
         }
       };
-      const [activeTab, setActiveTab] = useState("detail");
-      const [activeTab2, setActiveTab2] = useState("detail");
       const [formValues, setFormValues] = useState({
         departmentName: "",
         weight: "",
@@ -83,10 +72,6 @@ const [selectedRows, setSelectedRows] = useState([]);
       const isFormValid2 =
       formValues2.departmentName2 !== "" &&
       formValues.weight2 !== "" 
-      const [modalContent, setModalContent] = useState("");
-      const [isSelected, setIsSelected] = useState(false); // Tracks switch state
-      const [pendingState, setPendingState] = useState(false); // Tracks pending state
-      const [status, setStatus] = useState("Closed"); // Tracks current status
   return (
     <article className="bg-white w-full h-full">
       <div className="container mx-auto p-4">
