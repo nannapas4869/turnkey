@@ -1,12 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import DataTable_Employee from "../components/DataTable_Employee";
 import SearchBar from "../components/SearchBar";
 import Select from "react-select";
 function Employee() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const headers = ["No.", "Employee Name", "Position", "Department", "Status", "Action"];
-  const data1 = [
+  const headers = [
+    "No.",
+    "Employee Name",
+    "Position",
+    "Department",
+    "Status",
+    "Action",
   ];
+  const data1 = [];
   const options = [
     { value: "Active", label: "Active" },
     { value: "Inactive", label: "Inactive" },
@@ -21,12 +27,12 @@ function Employee() {
   return (
     <article className="bg-white w-full h-full">
       <div className="container mx-auto p-4">
-      <h1 className="mb-1">Employee Management</h1>
+        <h1 className="mb-1">Employee Management</h1>
         <p className="font-light text-xl">
           View the employee within your organization.
-        </p> 
-             <SearchBar/>
- <div className="flex flex-row justify-between">
+        </p>
+        <SearchBar />
+        <div className="flex flex-row justify-between">
           <div className="w-8/12 flex gap-5">
             <Select
               className="basic-single w-5/12 mt-10 mb-10"
@@ -45,26 +51,10 @@ function Employee() {
               placeholder="All Status"
             />
           </div>
-
-          <div className="flex justify-end items-start ">
-            <button
-              className="mt-10 button__style__table text-xl"
-              onClick={() => setIsModalOpen(true)}
-            >
-              <i className="ri-add-fill"></i> Import batch data
-            </button>
-          </div>
-      </div>
+        </div>
 
         <DataTable_Employee headers={headers} data={data1} />
-
-
-
-
-
       </div>
-
-     
     </article>
   );
 }
