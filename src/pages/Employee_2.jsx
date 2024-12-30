@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import SearchBar from "../components/SearchBar";
 import Switch from "../components/Switch";
-function Employee() {
+function Employee_2() {
   const [selectedDepartment, setSelectedDepartment] = useState("All");
 
   const headers = [
@@ -90,6 +90,7 @@ function Employee() {
           <table className="bg-white table-auto w-full">
             <thead className="bg-gray-100">
               <tr>
+
                 {headers.map((header, index) => (
                   <th
                     key={index}
@@ -116,7 +117,6 @@ function Employee() {
                     key={rowIndex}
                     className={rowIndex % 2 === 0 ? "bg-white" : "bg-gray-50"}
                   >
-                    <td className="px-4 py-2">{rowIndex + 1}</td>
                     {row.map((cell, cellIndex) => (
                       <td key={cellIndex} className="px-4 py-2 text-gray-700">
                         {cell}
@@ -133,4 +133,4 @@ function Employee() {
   );
 }
 
-export default Employee;
+export default Employee_2;
