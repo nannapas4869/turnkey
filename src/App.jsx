@@ -16,6 +16,8 @@ import Department_2 from './pages/Department_2';
 import SubCategory from './pages/SubCategory';
 import { useState } from 'react';
 import Sub2 from './pages/Sub2';
+import Employee from './pages/Employee';
+import Employee_2 from './pages/Employee_2';
 function App() {
   const [expanded, setExpanded] = useState(true);
   const [language, setLanguage] = useState('EN');
@@ -32,6 +34,7 @@ function App() {
           submenu = {[
               { text: "Department", to: "/Department", icon: <Circle size={10} /> },
               { text: "Category", to: "/Category", icon: <Circle size={10} /> },
+              { text: "Employee", to: "/Employee", icon: <Circle size={10} /> },
               { text: "Sub-Caegory", to: "/SubCategory", icon: <Circle size={10} /> },
           ]} />
           <SidebarItem
@@ -63,6 +66,8 @@ function App() {
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Management" element={<Management />} />
             <Route path="/Category" element={<Category/>} />
+            <Route path="/Employee" element={<Employee />} />
+            <Route path="/Employee/2" element={<Employee_2/>} />
             <Route path="/SubCategory" element={<SubCategory/>} />
             <Route path="/SubCategory/2" element={<Sub2/>} />
             <Route path="/Department" element={<Department />} />

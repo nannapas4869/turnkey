@@ -4,58 +4,41 @@ import Select from "react-select";
 import DataTable from "../components/DataTable";
 import "remixicon/fonts/remixicon.css";
 import Switch from "../components/Switch";
+import Modal from "react-modal";
 function Department_2() {
 const [selectedRows, setSelectedRows] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [isModalOpen3, setIsModalOpen3] = useState(false);
   const [isModalOpen4, setIsModalOpen4] = useState(false);
-  const handleSelectChange = (selectedOption) => {
-    setFormValues((prev) => ({
-      ...prev,
-      manager: selectedOption,
-    }));
-  };
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [name]: value }));
-  };
-      const headers = ["No.", "Department", "Manager Name", "Department ID", "Employee", "status", "Action"];
+  const [isModalOpen5, setIsModalOpen5] = useState(false                                                                               )
+ 
+      const headers = ["No.", "Department", "Manager Name", "Employee", "status", "Action"];
       const data = [
         [
           1,
           "Sales",
           "Jasmine Hettinger",
-          "001",
           15,
-          <button className="bg-active">
-            <i class="ri-circle-fill bg-circle-active"></i> Active
-          </button>,
+          <Switch />,
           <div class="flex flex-row gap-3">
              <i class="ri-eye-line eye__style cursor-pointer" onClick={() => setIsModalOpen2(true)}></i>
-            <i class="ri-pencil-line pencil__style cursor-pointer"  onClick={() => setIsModalOpen3(true)}></i>
-            <i class="ri-delete-bin-5-line bin__style cursor-pointer" onClick={() => setIsModalOpen4(true)}></i>
-          </div>,
+         </div>,
         ],
         [
             2,
             "Marketing",
             "Kelvin Altenwerth",
-            "002",
             20,
-            <button className="bg-active">
-              <i class="ri-circle-fill bg-circle-inactive"></i> Inactive
-            </button>,
+            <Switch />,
             <div class="flex flex-row gap-3">
                  <i class="ri-eye-line eye__style cursor-pointer" onClick={() => setIsModalOpen2(true)}></i>
-              <i class="ri-pencil-line pencil__style cursor-pointer"  onClick={() => setIsModalOpen3(true)}></i>
-              <i class="ri-delete-bin-5-line bin__style cursor-pointer" onClick={() => setIsModalOpen4(true)}></i>
             </div>,
           ],
       ];
       const options = [
-        { value: "Open", label: "Open" },
-        { value: "Close", label: "Close" },
+        { value: "Active", label: "Active" },
+        { value: "Inactive", label: "Inactive" },
       ];
     
       const itemsPerPageOptions = [5, 10, 20, 50, 100];
@@ -75,8 +58,6 @@ const [selectedRows, setSelectedRows] = useState([]);
           setCurrentPage(page);
         }
       };
-      const [activeTab, setActiveTab] = useState("detail");
-      const [activeTab2, setActiveTab2] = useState("detail");
       const [formValues, setFormValues] = useState({
         departmentName: "",
         weight: "",
@@ -116,7 +97,7 @@ const [selectedRows, setSelectedRows] = useState([]);
               className="mt-10 button__style__table text-xl"
               onClick={() => setIsModalOpen(true)}
             >
-              <i className="ri-add-fill"></i> Create Category
+              <i className="ri-add-fill"></i> Import batch data
             </button>
           </div>
         </div>

@@ -54,6 +54,12 @@ body {
     background-color: #D9D9D9;
 }
 .button__style__table {
+    background-color: #26A69A;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+}
+.button__style__table__subcat {
     background-color: #5175E9;
     color: white;
     padding: 0.8rem 2rem;
@@ -122,4 +128,7 @@ input[type="radio"] {
 .completed {
     background-color: #3AA94F;
     color: white;
+}
+.padding_0 {
+    padding-bottom: 0 !important;
 }

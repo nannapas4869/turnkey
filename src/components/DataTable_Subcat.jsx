@@ -97,7 +97,7 @@ const DataTable_Subcat = ({ headers = [], data = [] }) => {
               >
                 <p className="mt-10">No Objective Available</p>
                 <button
-                  className="mt-10 button__style__table"
+                  className="mt-10 button__style__table__subcat"
                   onClick={() => setIsModalOpen(true)}
                 >
                   <i className="ri-add-fill"></i> Create Objective
