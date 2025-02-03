@@ -13,7 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const SidebarContext = createContext();
 
 
-export default function Sidebar({ children }) {
+export default function Sidebar({ children ,acti}) {
   const [expanded, setExpanded] = useState(true);
   const [activeItem, setActiveItem] = useState(null);
   return (
@@ -74,9 +74,11 @@ export function SidebarItem({ icon, text, alert, submenu, to }) {
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const submenuRef = useRef();
   const [open, setOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("");
   const active =
-    location.pathname === to ||
-    submenu?.some((item) => location.pathname === item.to);
+  activeItem === text || // Ensure clicking the button highlights "Performance"
+  location.pathname === to ||
+  submenu?.some((item) => location.pathname === item.to);
   useEffect(() => {
     function handleClickOutside(event) {
       if (submenuRef.current && !submenuRef.current.contains(event.target)) {

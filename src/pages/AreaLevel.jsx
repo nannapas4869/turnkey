@@ -154,9 +154,9 @@ function Category() {
   return (
     <article className="bg-white w-full h-full">
       <div className="container mx-auto p-4">
-        <h1 className="mb-1">Category list (Area)</h1>
+        <h1 className="mb-1">Area Level List</h1>
         <p className="font-light text-xl">
-          Manage the categories for your organization's departments KPI.
+          Manage the area level list for your organization's departments KPI.
         </p>
         <SearchBar />
         <div className="flex flex-row justify-between">
@@ -167,7 +167,7 @@ function Category() {
               defaultValue={""}
               name="status"
               options={options}
-              placeholder="Project Management"
+              placeholder="Select Area Level List"
             />
             <Select
               className="basic-single w-44 mt-10 mb-10"
@@ -184,7 +184,7 @@ function Category() {
               className="mt-10 button__style__table__subcat text-xl"
               onClick={() => setIsModalOpen(true)}
             >
-              <i className="ri-add-fill"></i> Create Category
+              <i className="ri-add-fill"></i> Create Area Level List
             </button>
           </div>
         </div>
@@ -246,13 +246,13 @@ function Category() {
             className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-3xl font-semibold mb-4">Create Category</h2>
+            <h2 className="text-3xl font-semibold mb-4">Create Area Level List</h2>
           
             
               <article id="detail">
                 <div className="mt-14">
                   <label className="block text-xl mt-5 mb-5">
-                    Category Name
+                    Area Level List Name
                   </label>
                   <input
                     type="text"
@@ -282,7 +282,7 @@ function Category() {
                 }`}
                 disabled={!isFormValid}
               >
-                Create Category
+                Create Area Level List
               </button>
             </div>
           </div>
@@ -297,14 +297,14 @@ function Category() {
             className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-3xl font-semibold mb-4">View Category</h2>
+            <h2 className="text-3xl font-semibold mb-4">View Area Level List</h2>
             <label className="block text-xl mt-5 mb-5">
-                    Category Name
+                    Area Level List Name
             </label>
             <input
               type="text"
               name="departmentName"
-              value="Category1"
+              value="Area Level List Name"
               className="border-solid border border__color__input p-3 w-full rounded mb-5"
               placeholder="Enter Category Name"
               disabled
@@ -330,13 +330,13 @@ function Category() {
             className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-3xl font-semibold mb-4">Edit Category</h2>
+            <h2 className="text-3xl font-semibold mb-4">Edit Area Level List</h2>
           
             {activeTab2 === "detail" && (
               <article id="detail">
                 <div className="mt-14">
                   <label className="block text-xl mt-5 mb-5">
-                    Category Name
+                    Area Level List Name
                   </label>
                   <input
                     type="text"
@@ -436,10 +436,10 @@ function Category() {
             className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-3xl font-semibold mb-4">Delete Category!!</h2>
+            <h2 className="text-3xl font-semibold mb-4">Delete Area Level List!!</h2>
             <hr className="mb-10"/>
             <p className="text-xl font-semibold mb-5">Notification</p>
-            <p className="mb-10">Are you sure you want to delete this category? This action cannot be done.</p>
+            <p className="mb-10">Are you sure you want to delete this area level list? This action cannot be done.</p>
             <div className="flex justify-end aligns-end">
               <button
                 className="px-4 py-2 bg-white text-black rounded"

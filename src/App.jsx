@@ -11,13 +11,14 @@ import AssignKPI from './pages/Assign'; // Ensure this is imported
 import TrackKPI from './pages/Track';   // Ensure this is imported
 import Performance from './pages/Performance';
 import Department from './pages/Department';
-import Category from './pages/Category';
+import AreaLevel from './pages/AreaLevel';
 import Department_2 from './pages/Department_2';
-import SubCategory from './pages/SubCategory';
+import KPILevel from './pages/KPILevel';
 import { useState } from 'react';
 import Sub2 from './pages/Sub2';
 import Employee from './pages/Employee';
 import Employee_2 from './pages/Employee_2';
+import SearchBar_Performance from "./components/SearchBar_Performance"
 function App() {
   const [expanded, setExpanded] = useState(true);
   const [language, setLanguage] = useState('EN');
@@ -26,6 +27,7 @@ function App() {
     const newLang = e.target.value;
     setLanguage(newLang);
   };
+  const [activeItem, setActiveItem] = useState("");
   return (
     <>
       <div className="flex">
@@ -33,9 +35,9 @@ function App() {
           <SidebarItem icon={<SquareChartGantt size={20} />} text="Management" to="/Management"
           submenu = {[
               { text: "Department", to: "/Department", icon: <Circle size={10} /> },
-              { text: "Category", to: "/Category", icon: <Circle size={10} /> },
               { text: "Employee", to: "/Employee", icon: <Circle size={10} /> },
-              { text: "Sub-Caegory", to: "/SubCategory", icon: <Circle size={10} /> },
+              { text: "Area Level", to: "/AreaLevel", icon: <Circle size={10} /> },
+              { text: "KPIs Level", to: "/KPILevel", icon: <Circle size={10} /> },
           ]} />
           <SidebarItem
             icon={<ChartPie size={20} />}
@@ -43,10 +45,9 @@ function App() {
             to="/KPIManagement"
             submenu={[
               { text: "Track KPIs", to: "/Track", icon: <Circle size={10} /> },
+              { text: "Performance", to: "/Performance", icon: <Circle size={10} /> },
             ]}
           />
-          <SidebarItem icon={<ClipboardPlus size={20} />} text="Report" to="/Report" />
-          <SidebarItem icon={<Settings size={20} />} text="Settings" to="/Settings" />
           <SidebarItem icon={<Globe size={20} />} text="Language" to="#" 
           submenu={[
             {
@@ -65,10 +66,10 @@ function App() {
           <Routes>
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Management" element={<Management />} />
-            <Route path="/Category" element={<Category/>} />
+            <Route path="/AreaLevel" element={<AreaLevel/>} />
             <Route path="/Employee" element={<Employee />} />
             <Route path="/Employee/2" element={<Employee_2/>} />
-            <Route path="/SubCategory" element={<SubCategory/>} />
+            <Route path="/KPILevel" element={<KPILevel/>} />
             <Route path="/SubCategory/2" element={<Sub2/>} />
             <Route path="/Department" element={<Department />} />
             <Route path="/Department/2" element={<Department_2/>} />

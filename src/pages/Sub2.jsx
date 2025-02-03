@@ -169,9 +169,9 @@ function Sub2() {
   return (
     <article className="bg-white w-full h-full">
     <div className="container mx-auto p-4">
-      <h1 className="mb-1">Sub Category List (KPIs&Objective)</h1>
+      <h1 className="mb-1">KPIs Level List</h1>
       <p className="font-light text-xl">
-        Manage the timeline in sub-categories for your organization's KPI
+        Manage the timeline in kpis level list for your organization's KPI
       </p>
       <SearchBar />
       <div className="flex flex-row justify-between">
@@ -192,7 +192,7 @@ function Sub2() {
             className="mt-10 button__style__table__subcat text-xl"
             onClick={() => setIsModalOpen(true)}
           >
-            <i className="ri-add-fill"></i> Create Category
+            <i className="ri-add-fill"></i> Create KPIs Level List
           </button>
         </div>
       </div>
@@ -254,7 +254,7 @@ function Sub2() {
          className="bg-white p-6 rounded shadow-lg w-6/12 max-h-[500px] overflow-y-auto"
          onClick={(e) => e.stopPropagation()}
        >
-         <h2 className="text-3xl font-semibold mb-4">Create Objective</h2>
+         <h2 className="text-3xl font-semibold mb-4">Create KPIs Level List</h2>
          <div className="flex gap-10">
            <p
              className={`text-xl cursor-pointer ${
@@ -374,7 +374,7 @@ function Sub2() {
           className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100 max-h-[500px] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
-          <h2 className="text-3xl font-semibold mb-4">View Objective</h2>
+          <h2 className="text-3xl font-semibold mb-4">View KPIs Level List</h2>
           <label className="block text-xl mt-5 mb-5">
                  Objective Name
           </label>
@@ -483,7 +483,7 @@ function Sub2() {
        className="bg-white p-6 rounded shadow-lg w-6/12 max-h-[500px] overflow-y-auto"
        onClick={(e) => e.stopPropagation()}
      >
-       <h2 className="text-3xl font-semibold mb-4">Create Objective</h2>
+       <h2 className="text-3xl font-semibold mb-4">Create KPIs Level List</h2>
        <div className="flex gap-10">
          <p
            className={`text-xl cursor-pointer ${
@@ -601,10 +601,10 @@ function Sub2() {
           className="bg-white p-6 rounded shadow-lg w-6/12 transition-transform transform scale-100"
           onClick={(e) => e.stopPropagation()}
         >
-          <h2 className="text-3xl font-semibold mb-4">Delete Objective!!</h2>
+          <h2 className="text-3xl font-semibold mb-4">Delete KPIs Level List!!</h2>
           <hr className="mb-10"/>
           <p className="text-xl font-semibold mb-5">Notification</p>
-          <p className="mb-10">Are you sure you want to delete this objective? This action cannot be done.</p>
+          <p className="mb-10">Are you sure you want to delete this kpis level list? This action cannot be done.</p>
           <div className="flex justify-end aligns-end">
             <button
               className="px-4 py-2 bg-white text-black rounded"

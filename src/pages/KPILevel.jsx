@@ -2,6 +2,7 @@ import React from "react";
 import SearchBarSubCat from "../components/SearchBarSubCat";
 import Select from "react-select";
 import DataTable_Subcat from "../components/DataTable_Subcat";
+import { useState } from "react";
 const SubCategory = () => {
     const headers = ["No.","Objective Name", "Status", "Action"];
     const data1 = [
@@ -10,13 +11,14 @@ const SubCategory = () => {
     { value: "Active", label: "Active" },
     { value: "Inactive", label: "Inactive" },
   ];
+  const [activeItem, setActiveItem] = useState("");
     return (
         <>
        <article className="bg-white w-full h-full">
       <div className="container mx-auto p-4">
-        <h1 className="mb-1">Sub Category List (KPIs & Objective)</h1>
+        <h1 className="mb-1">KPIs Level List</h1>
         <p className="font-light text-xl">
-          Manage the timeline in sub-categories for your organization's KPI.
+          Manage the timeline in KPIs Level List for your organization's KPI.
         </p>
         <SearchBarSubCat />
         <Select

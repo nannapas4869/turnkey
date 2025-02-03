@@ -95,12 +95,12 @@ const DataTable_Subcat = ({ headers = [], data = [] }) => {
                 colSpan={headers.length + 1}
                 className="text-center px-4 py-6 text-gray-500 text-xl font-semibold"
               >
-                <p className="mt-10">No Objective Available</p>
+                <p className="mt-10">No KPIs Level List Available</p>
                 <button
                   className="mt-10 button__style__table__subcat"
                   onClick={() => setIsModalOpen(true)}
                 >
-                  <i className="ri-add-fill"></i> Create Objective
+                  <i className="ri-add-fill"></i> Create KPIs Level List
                 </button>
               </td>
             </tr>
@@ -139,7 +139,7 @@ const DataTable_Subcat = ({ headers = [], data = [] }) => {
             className="bg-white p-6 rounded shadow-lg w-6/12 max-h-[500px] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-3xl font-semibold mb-4">Create Objective</h2>
+            <h2 className="text-3xl font-semibold mb-4">Create KPIs Level List</h2>
             <div className="flex gap-10">
               <p
                 className={`text-xl cursor-pointer ${
@@ -245,7 +245,7 @@ const DataTable_Subcat = ({ headers = [], data = [] }) => {
                 }`}
                 disabled={!isFormValid}
               >
-                Create Category
+                Create KPIs Level List
               </button>
             </div>
           </div>

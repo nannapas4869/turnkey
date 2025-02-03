@@ -1,13 +1,59 @@
-import SearhBar from "../components/SearchBar_common";
+import SearhBar_Performance from "../components/SearchBar_Performance";
+import { Link, useNavigate  } from "react-router-dom";
+import { useState } from "react";
 const Track = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+const navigate = useNavigate();
+
+const handleSearch = (e) => {
+  e.preventDefault(); // Prevent form from reloading the page
+  if (searchTerm.trim() !== "") {
+    navigate(`/performance?query=${searchTerm}`); // Redirect with query
+  } else {
+    navigate("/performance"); // Redirect without search query
+  }
+};
+const [isOpen, setIsOpen] = useState(false);
+
+  const handleExport = (type) => {
+    console.log(`Exporting as ${type}`); // Replace with export logic
+    setIsOpen(false);
+  };
   return (
-    <article className="bg-white w-full h-full">
+    <article className="bg-white w-full h-full" onSubmit={handleSearch}>
       <div className="container mx-auto p-4">
-        <h1 className="mb-1">Choose a Deadline for the selected KPIs</h1>
-        <p className="font-light text-xl">
-          Set clear, measuable target for each KPI to track employee
-          performance.
-        </p>
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-col flex-grow-0">
+            <h1 className="mb-1">Choose a Deadline for the selected KPIs</h1>
+            <p className="font-light text-xl">
+              Set clear, measurable target for each KPI to track employee
+              performance.
+            </p>
+          </div>
+
+          <div className="relative inline-block">
+          <button className="bg-[#3AA94F] flex items-center px-4 py-4 rounded-md text-white" onClick={() => setIsOpen(!isOpen)}>
+            Export File &nbsp;<i class="ri-arrow-down-s-line"></i>
+          </button>
+          {isOpen && (
+        <ul className="absolute mt-2 w-40 bg-white border rounded-md shadow-lg">
+          <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => handleExport("CSV")}>
+            Export as CSV
+          </li>
+          <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => handleExport("Excel")}>
+            Export as Excel
+          </li>
+        </ul>
+      )}
+          </div>
+          <input type="date" name="date" id="date" className="border-solid border border__color__input p-3 rounded"/>
+          <p>to</p>
+          <input type="date" name="date" id="date" className="border-solid border border__color__input p-3 rounded"/>
+          <button className="bg-[#5175E9] flex items-center px-4 py-4 rounded-md text-white">
+            Search  <i class="ri-search-line ms-2"></i>
+          </button>
+        </div>
+
         <div className="flex flex-row gap-6 basis-auto mt-14">
           <div className=" w-96 h-44 bg-[#E6F6F2] rounded-xl">
             <div className="flex flex-col gap-6 px-4 py-10">
@@ -40,7 +86,15 @@ const Track = () => {
             </div>
           </div>
         </div>
-        <SearhBar />
+        <form className="relative mt-10">
+        <div className="relative">
+            <input type="search" placeholder='Search KPIs' className="w-full p-4 rounded-md style__search pl-10 " value={searchTerm}  onChange={(e) => setSearchTerm(e.target.value)}/>
+            <button type="submit" className="bg-[#5175E9] flex items-center px-4 py-4 rounded-md text-white absolute right-0 top-1/2 transform -translate-y-1/2">
+           <i class="ri-search-line "></i>
+          </button>
+        
+        </div>
+    </form>
         <div className="flex justify-start">
           <div className="notStart mt-5 p-4 rounded-lg">Not Started</div>
         </div>
@@ -69,13 +123,20 @@ const Track = () => {
               <td className="w-1/5 py-5 px-4 text-[#6C6C6C] ">
                 Schedule Performance Index
               </td>
-              <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">Kristi Christiansen</td>
-              <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">85% Engagement Rate</td>
+              <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">
+                Kristi Christiansen
+              </td>
+              <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">
+                85% Engagement Rate
+              </td>
               <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">Not Start</td>
               <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">2024/07/04</td>
             </tr>
             <tr className="border-b border-gray-200">
-              <td className="w-1/5 py-5 px-4 text-[#6C6C6C] truncate" title="Behavior and Attitude towards others">
+              <td
+                className="w-1/5 py-5 px-4 text-[#6C6C6C] truncate"
+                title="Behavior and Attitude towards others"
+              >
                 Behavior and Attitude towar...
               </td>
               <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">Lynn Brown</td>
@@ -113,13 +174,18 @@ const Track = () => {
               <td className="w-1/5 py-5 px-4 text-[#6C6C6C] ">
                 First Contact Resolution rate
               </td>
-              <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">Rosemarie Hirthe</td>
+              <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">
+                Rosemarie Hirthe
+              </td>
               <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">15% Increase</td>
               <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">7%</td>
               <td className="w-1/5 py-2 px-4 text-[#6C6C6C]">2024/07/04</td>
             </tr>
             <tr className="border-b border-gray-200">
-              <td className="py-5 px-4 text-[#6C6C6C] truncate" title="Demonstrate Leadership with client">
+              <td
+                className="py-5 px-4 text-[#6C6C6C] truncate"
+                title="Demonstrate Leadership with client"
+              >
                 Demonstrate Leadership with cli...
               </td>
               <td className="py-2 px-4 text-[#6C6C6C]">Georgia Russel</td>
@@ -207,7 +273,10 @@ const Track = () => {
               <td className="py-2 px-4 text-[#6C6C6C]">2022/01/04</td>
             </tr>
             <tr className="border-b border-gray-200">
-              <td className="py-5 px-4 text-[#6C6C6C] truncate" title="Exhibits thought leadership around new ideas, strategies and opportunity">
+              <td
+                className="py-5 px-4 text-[#6C6C6C] truncate"
+                title="Exhibits thought leadership around new ideas, strategies and opportunity"
+              >
                 Exhibits thought leadership...
               </td>
               <td className="py-2 px-4 text-[#6C6C6C]">Gregg Olson</td>
